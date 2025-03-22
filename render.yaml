@@ -2,13 +2,8 @@ services:
   - type: web
     name: mlflow-server
     env: python
+    region: frankfurt
     plan: free
     buildCommand: pip install -r requirements.txt
-    startCommand: >
-      mlflow server
-      --backend-store-uri postgresql://mlflow_db_hisu_user:AasxbT5V64Q68UZO1uf4e0dpQW6noX5S@dpg-cvfco68fnakc739n1b3g-a:5432/mlflow_db_hisu
-      --default-artifact-root /var/tmp/mlruns
-      --host 0.0.0.0
-      --port 10000
-      --serve-artifacts
+    startCommand: mlflow server --backend-store-uri postgresql://mlflow_db_zpf4_user:0J6HuL2s9Cs8BPti8V0Zx1lyocJJIcva@dpg-cvfejk1svqrc73d0n5sg-a:5432/mlflow_db_zpf4 --default-artifact-root /tmp/mlruns --host 0.0.0.0 --port 10000 --serve-artifacts
 
