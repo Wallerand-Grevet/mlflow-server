@@ -1,7 +1,7 @@
 import os
 import subprocess
 
-# Dossiers temporaires autorisés en écriture par Render
+# Chemins dans /tmp pour éviter les problèmes de permissions
 ARTIFACT_PATH = "/tmp/mlruns"
 DB_PATH = "/tmp/mlflow.db"
 
@@ -12,5 +12,7 @@ subprocess.run([
     "--backend-store-uri", f"sqlite:///{DB_PATH}",
     "--default-artifact-root", f"file:{ARTIFACT_PATH}",
     "--host", "0.0.0.0",
-    "--port", "10000"
+    "--port", "10000",
+    "--serve-artifacts"
 ])
+
