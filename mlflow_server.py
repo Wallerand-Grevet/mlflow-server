@@ -1,14 +1,16 @@
 import os
 import subprocess
 
-# Crée le dossier de stockage des runs si besoin
-os.makedirs("mlruns", exist_ok=True)
+# Dossiers temporaires autorisés en écriture par Render
+ARTIFACT_PATH = "/tmp/mlruns"
+DB_PATH = "/tmp/mlflow.db"
 
-# Lance le serveur MLflow
+os.makedirs(ARTIFACT_PATH, exist_ok=True)
+
 subprocess.run([
     "mlflow", "server",
-    "--backend-store-uri", "sqlite:///mlflow.db",
-    "--default-artifact-root", "file:/tmp/mlruns",
+    "--backend-store-uri", f"sqlite:///{DB_PATH}",
+    "--default-artifact-root", f"file:{ARTIFACT_PATH}",
     "--host", "0.0.0.0",
     "--port", "10000"
 ])
