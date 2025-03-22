@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: mlflow-server
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python mlflow_server.py
+    plan: free
