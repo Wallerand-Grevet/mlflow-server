@@ -8,7 +8,7 @@ os.makedirs("mlruns", exist_ok=True)
 subprocess.run([
     "mlflow", "server",
     "--backend-store-uri", "sqlite:///mlflow.db",
-    "--default-artifact-root", "file:/app/mlruns",
+    "--default-artifact-root", "file:/tmp/mlruns",
     "--host", "0.0.0.0",
     "--port", "10000"
 ])
